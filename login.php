@@ -35,19 +35,11 @@ if (isset($_POST['submit-button'])) {
         $query = "INSERT INTO usersTest (username, password) VALUES ('$username', '$password')";
         $result = mysqli_query($conn, $query);
 
-        if ($result == false) {
-            echo "Error execution query: " . mysqli_error($conn);
+        if ($result) {
+            header("Location: welcome.php");
+            exit();
         } else {
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $count = mysqli_num_rows($result);
-            if ($count == 1) {
-                header("Location:welcome.php");
-            } else {
-                echo "<script>
-                window.location.href = 'index.php'
-                alert('Login failed. Insertion didnt work')
-                </script>";
-            }
+            echo "Error inserting user into database: " . mysqli_error($conn);
         }
     }
 }
