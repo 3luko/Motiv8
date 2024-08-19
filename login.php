@@ -27,7 +27,6 @@ if (isset($_POST['submit-button'])) {
         if ($user['username'] === $username) {
             array_push($errors, "Username already exists");
             echo "Username already exists";
-            
         }
     }
 
