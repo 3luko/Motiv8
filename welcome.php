@@ -17,7 +17,8 @@ session_start();
   <h1>Account Created! Welcome
     <?php
     echo $_SESSION['session_user'];
-    ?></h1>
+    ?>
+  </h1>
 </body>
 
 </html>
