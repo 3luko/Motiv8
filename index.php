@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connection.php');
 ?>
 <!DOCTYPE html>
@@ -37,7 +38,7 @@ include('connection.php');
           <label for="login-username">
             <h6>Username:</h6>
           </label>
-          <input autocomplete="off" class="input-box" type="text" name="login-username" value="" id="login-user"/>
+          <input autocomplete="off" class="input-box" type="text" name="login-username" value="" id="login-user" />
         </div>
         <!-- PASSWORD -->
         <div class="pwd-box">
@@ -61,3 +62,7 @@ include('connection.php');
 </body>
 
 </html>
+
+<?php
+session_destroy();
+?>

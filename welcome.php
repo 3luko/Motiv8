@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +14,13 @@
 </head>
 
 <body>
-  <h1>Account Created! Welcome </h1>
+  <h1>Account Created! Welcome
+    <?php
+    echo $_SESSION['session_user'];
+    ?></h1>
 </body>
 
 </html>
+<?php
+session_destroy();
+?>

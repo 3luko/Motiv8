@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connection.php');
 //if the submit button was clicked then it will start the query
 if (isset($_POST['submit-button'])) {
@@ -50,14 +51,15 @@ if (isset($_POST['submit-button'])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-    if($user){
-        if($user['username'] === $username){
+    if ($user) {
+        if ($user['username'] === $username) {
             $errors[] = "This username is in the database. Please try again.";
             echo "This username is in the database. Please try again.";
             exit();
         }
     }
     $stmt->close();
+    $_SESSION['session_user'] = $username;
 
     //if there are no errors it will insert the user into the database
     if (count($errors) == 0) {
