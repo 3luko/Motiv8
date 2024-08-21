@@ -1,6 +1,6 @@
 .loginBox {
     width: 400px;
-    height: 250px;
+    height: 300px;
     top: 50%;
     left: 50%;
     background-color: rgba(173, 216, 230, 0.5);
@@ -11,7 +11,7 @@
 }
 
 body{
-    background-color: gray;
+    background-color: darkslategray;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -20,7 +20,7 @@ body{
 
 .email-box{
     padding-top: 5%;
-    padding-bottom : 3%;
+    
 }
 
 .pwd-box{

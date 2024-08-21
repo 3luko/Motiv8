@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <h1>Login Successful!</h1>
+  <h1>Account Created! Welcome </h1>
 </body>
 
 </html>
