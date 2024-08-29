@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connection.php');
 ?>
 <!DOCTYPE html>
@@ -22,7 +23,7 @@ include('connection.php');
 <body>
   <main>
     <div class="loginBox">
-      <h3>Sign in to Motiv8</h3>
+      <h3>Sign up to Motiv8</h3>
       <!-- FORM DATA********************************************************** -->
       <!--EMAIL-->
       <form name="login-form" method="post" action="login.php">
@@ -37,7 +38,7 @@ include('connection.php');
           <label for="login-username">
             <h6>Username:</h6>
           </label>
-          <input autocomplete="off" class="input-box" type="text" name="login-username" value="" id="login-user"/>
+          <input autocomplete="off" class="input-box" type="text" name="login-username" value="" id="login-user" />
         </div>
         <!-- PASSWORD -->
         <div class="pwd-box">
@@ -51,7 +52,7 @@ include('connection.php');
           <input
             type="submit"
             name="submit-button"
-            value="Sign in"
+            value="Create Account"
             class="btn btn-success btn-block signin-btn" />
         </div>
       </form>
@@ -61,3 +62,7 @@ include('connection.php');
 </body>
 
 </html>
+
+<?php
+session_destroy();
+?>
