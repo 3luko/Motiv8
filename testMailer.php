@@ -29,11 +29,11 @@ try {
     $mail->setFrom('noreplymotiv8@gmail.com', 'Mailer');
     $mail->addAddress('ethanlukandwa@gmail.com', 'Ethan Lukoooo');     //Add a recipient
     $mail->addReplyTo('noreplymotiv8@gmail.com', '3luko');      //Name is optional
-    
+
 
     //Attachments
     //$mail->addAttachment('images/gmailSender');         //Add attachments
-    
+
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML

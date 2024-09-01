@@ -10,12 +10,19 @@
     padding-right: 5%;
 }
 
-body{
+.index-body{
     background-color: darkslategray;
     align-items: center;
     justify-content: center;
     display: flex;
     padding-top: 12%;
+}
+
+.welcome-body{
+    background-color: darkslateblue;
+    align-items: center;
+    padding-left: 30%;
+    padding-top: 20%;
 }
 
 .email-box{

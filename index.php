@@ -20,7 +20,7 @@ include('connection.php');
   <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body class="index-body">
   <main>
     <div class="loginBox">
       <h3>Sign up to Motiv8</h3>
