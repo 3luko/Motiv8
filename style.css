@@ -23,11 +23,13 @@
     align-items: center;
     padding-left: 30%;
     padding-top: 20%;
+    color: white;
 }
+
+
 
 .email-box{
     padding-top: 5%;
-    
 }
 
 .pwd-box{
