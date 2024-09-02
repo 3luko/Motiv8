@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('connection.php');
+include('functions.php');
 //if the submit button was clicked then it will start the query
 if (isset($_POST['submit-button'])) {
     //getting the values from the username input and the password input
@@ -10,56 +11,43 @@ if (isset($_POST['submit-button'])) {
 
     $errors = array();
 
+
     //making sure that they are properly filled
     if (empty($email)) {
         array_push($errors, "Email Required");
-        echo "Email Required";
-        exit();
     }
     if (empty($username)) {
         array_push($errors, "Username Required");
-        echo "Username Required";
-        exit();
     }
     if (empty($password)) {
         array_push($errors, "Password required");
-        echo "Password Required. Please try again";
+    }
+
+    
+
+    //Error Handling
+    if (!isGmail($email)){
+        array_push($errors, "Please use a Gmail account.");
+    }
+    
+    if (checkUser($conn, $username)){
+        array_push($errors, "Username already taken");
+    } 
+
+    if (checkEmail($conn, $email)){
+        array_push($errors, "Email already taken");
+    }
+
+    if(empty($email) && empty($username) && empty($password)){
+        array_push($errors, "Please enter in the fields above.");
+    }
+
+    //if there are errors it will display the errors on the login page
+    if (count($errors) > 0){
+        $_SESSION['errors'] = $errors;
+        header("Location: index.php");
         exit();
     }
-
-    //checking if email is in the database 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-
-    if ($user) {
-        global $errors;
-        if ($user['email'] === $email) {
-            $errors[] = "This email is in the database. Please try again.";
-            echo "This email is in the database. Please try again.";
-            exit();
-        }
-    }
-    $stmt->close();
-
-    //checking if username is in the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-    if ($user) {
-        if ($user['username'] === $username) {
-            $errors[] = "This username is in the database. Please try again.";
-            echo "This username is in the database. Please try again.";
-            exit();
-        }
-    }
-    $stmt->close();
-    $_SESSION['session_user'] = $username;
 
     //if there are no errors it will insert the user into the database
     if (count($errors) == 0) {
