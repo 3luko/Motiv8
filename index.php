@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('connection.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,13 +57,18 @@ include('connection.php');
             class="btn btn-success btn-block signin-btn" />
         </div>
       </form>
+      <?php if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0): ?>
+        <ul>
+          <h6 class="errors"><?php echo end($_SESSION['errors']) ?></h6>
+        </ul>
+        <?php unset($_SESSION['errors']); ?>
+      <?php endif; ?>
     </div>
   </main>
   <script src="index.js"></script>
 </body>
 
 </html>
-
 <?php
 session_destroy();
 ?>

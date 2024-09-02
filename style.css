@@ -43,3 +43,9 @@
 .signin-btn{
     border: 2px solid #000;
 }
+
+.errors{
+    color: rgb(179, 6, 6);
+    padding-left: 25%;
+    padding-top: 2%; 
+}
