@@ -18,12 +18,17 @@ session_start();
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
-<body>
-  <h1>Account Created! Welcome
-    <?php
-    echo $_SESSION['session_user'];
-    ?>
-  </h1>
+<body class="welcome-body">
+  <div>
+    <h1>Account Created! Welcome
+      <?php
+      echo $_SESSION['session_user'];
+      ?>
+    </h1>
+  </div>
+  <div>
+    <h3>You are now entered into the email subscription. Thank you!</h3>
+  </div>
 </body>
 
 </html>

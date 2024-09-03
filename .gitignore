@@ -1,0 +1,6 @@
+# Ignore environment variables file
+.env
+
+#tester files
+welcome_tester.html
+testMailer.php

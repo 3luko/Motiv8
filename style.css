@@ -10,7 +10,7 @@
     padding-right: 5%;
 }
 
-body{
+.index-body{
     background-color: darkslategray;
     align-items: center;
     justify-content: center;
@@ -18,9 +18,18 @@ body{
     padding-top: 12%;
 }
 
+.welcome-body{
+    background-color: darkslateblue;
+    align-items: center;
+    padding-left: 30%;
+    padding-top: 20%;
+    color: white;
+}
+
+
+
 .email-box{
     padding-top: 5%;
-    
 }
 
 .pwd-box{
@@ -35,4 +44,10 @@ body{
 
 .signin-btn{
     border: 2px solid #000;
+}
+
+.errors{
+    color: rgb(179, 6, 6);
+    padding-left: 25%;
+    padding-top: 2%; 
 }

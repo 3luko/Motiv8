@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('connection.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +21,10 @@ include('connection.php');
   <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body class="index-body">
   <main>
     <div class="loginBox">
-      <h3>Sign up to Motiv8</h3>
+      <h3>Create an account</h3>
       <!-- FORM DATA********************************************************** -->
       <!--EMAIL-->
       <form name="login-form" method="post" action="login.php">
@@ -56,13 +57,18 @@ include('connection.php');
             class="btn btn-success btn-block signin-btn" />
         </div>
       </form>
+      <?php if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0): ?>
+        <ul>
+          <h6 class="errors"><?php echo end($_SESSION['errors']) ?></h6>
+        </ul>
+        <?php unset($_SESSION['errors']); ?>
+      <?php endif; ?>
     </div>
   </main>
   <script src="index.js"></script>
 </body>
 
 </html>
-
 <?php
 session_destroy();
 ?>
