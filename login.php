@@ -5,9 +5,9 @@ include('functions.php');
 //if the submit button was clicked then it will start the query
 if (isset($_POST['submit-button'])) {
     //getting the values from the username input and the password input
-    $email = $_POST['login-email'];
-    $username = $_POST['login-username'];
-    $password = $_POST['login-pwd'];
+    $email = htmlspecialchars($_POST['login-email']);
+    $username = htmlspecialchars($_POST['login-username']);
+    $password = htmlspecialchars($_POST['login-pwd']);
 
     $errors = array();
 
@@ -54,14 +54,7 @@ if (isset($_POST['submit-button'])) {
 
     //if there are no errors it will insert the user into the database
     if (count($errors) == 0) {
-        $stmt = $conn->prepare("INSERT INTO users (email, username, pwd) VALUES (?, ?, ?)");
-        $stmt->bind_param('sss', $email, $username, $password);
-        if ($stmt->execute()) {
-            header("Location: welcome.php");
-            exit();
-        } else {
-            echo "Error inserting user into database: " . mysqli_error($conn);
-        }
+        create_User($email, $username, $pwd, $conn);
     }
-    $stmt->close();
+    
 }

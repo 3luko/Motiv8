@@ -28,7 +28,6 @@ function send_Entry_Mail($email, $username)
         //Recipients
         $mail->setFrom('noreplymotiv8@gmail.com', 'Motiv8');
         $mail->addAddress($email, 'Ethan Lukoooo');     //Add a recipient
-        $mail->addReplyTo('noreplymotiv8@gmail.com', '3luko');      //Name is optional
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
@@ -179,4 +178,17 @@ function quote_of_the_week($email, $username)
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
+}
+
+function create_User($email, $username, $pwd, $conn)
+{
+    $stmt = $conn->prepare("INSERT INTO users (email, username, pwd) VALUES (?, ?, ?)");
+    $stmt->bind_param('sss', $email, $username, $pwd);
+    if ($stmt->execute()) {
+        header("Location: welcome.php");
+        exit();
+    } else {
+        echo "Error inserting user into database: " . mysqli_error($conn);
+    }
+    $stmt->close();
 }
