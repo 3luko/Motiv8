@@ -49,6 +49,9 @@ if (isset($_POST['submit-button'])) {
         exit();
     }
 
+    $_SESSION['session_user'] = $username;
+    send_Entry_Mail($email, $username);
+
     //if there are no errors it will insert the user into the database
     if (count($errors) == 0) {
         $stmt = $conn->prepare("INSERT INTO users (email, username, pwd) VALUES (?, ?, ?)");

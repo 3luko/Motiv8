@@ -24,7 +24,6 @@ session_start();
       <?php
       echo $_SESSION['session_user'];
       ?>
-      
     </h1>
   </div>
   <div>

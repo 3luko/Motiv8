@@ -24,7 +24,7 @@ include('connection.php');
 <body class="index-body">
   <main>
     <div class="loginBox">
-      <h3>Sign up to Motiv8</h3>
+      <h3>Create an account</h3>
       <!-- FORM DATA********************************************************** -->
       <!--EMAIL-->
       <form name="login-form" method="post" action="login.php">
