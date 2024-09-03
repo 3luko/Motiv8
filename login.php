@@ -50,7 +50,7 @@ if (isset($_POST['submit-button'])) {
     }
 
     $_SESSION['session_user'] = $username;
-    send_Entry_Mail($email);
+    send_Entry_Mail($email, $username);
 
     //if there are no errors it will insert the user into the database
     if (count($errors) == 0) {

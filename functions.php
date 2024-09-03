@@ -9,7 +9,7 @@ $env = parse_ini_file('.env');
 
 require 'vendor/autoload.php';
 
-function send_Entry_Mail($email)
+function send_Entry_Mail($email, $username)
 {
     $mail = new PHPMailer(true);
     $env = parse_ini_file('.env');
@@ -26,13 +26,13 @@ function send_Entry_Mail($email)
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('noreplymotiv8@gmail.com', 'Mailer');
+        $mail->setFrom('noreplymotiv8@gmail.com', 'Motiv8');
         $mail->addAddress($email, 'Ethan Lukoooo');     //Add a recipient
         $mail->addReplyTo('noreplymotiv8@gmail.com', '3luko');      //Name is optional
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'Welcome to Motiv8!';
+        $mail->Subject = 'Welcome to Motiv8 ' . $username . '!';
         $mail->Body    = 'This will be your first quote: Try your best in everything you do. Your time will come.';
 
         $mail->send();
@@ -94,7 +94,7 @@ function isGmail($email)
     return false;
 }
 
-function quote_of_the_week($email)
+function quote_of_the_week($email, $username)
 {
     $mail = new PHPMailer(true);
     $env = parse_ini_file('.env');
@@ -112,7 +112,7 @@ function quote_of_the_week($email)
 
         //Recipients
         $mail->setFrom($env['SMTP_USER'], 'Motiv8');
-        $mail->addAddress($email, 'Motiv8ee');     //Add a recipient
+        $mail->addAddress($email, $username);     //Add a recipient
 
         //Hard coding the image for the email
         $mail->addEmbeddedImage('images/image.png', 'logo', 'image.png');
@@ -148,7 +148,7 @@ function quote_of_the_week($email)
 <body>
   <main>
     <div>
-      <h1 style="text-align: center; font-family: monospace;">Motiv8</h1>
+      <h1 style="text-align: center; font-family: monospace;">"' . $username . '"</h1>
     </div>
     <div style="height: 250;
     width: 50%;
@@ -180,5 +180,3 @@ function quote_of_the_week($email)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
-quote_of_the_week('ethanlukandwa@gmail.com');
